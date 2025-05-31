@@ -6,13 +6,15 @@ const cors = require("cors");
 const mongoose = require("mongoose"); 
 const corsOptions = require("./config/corsOptions"); 
 const connectDB = require("./config/db"); 
+const authRoutes = require('./routes/authRoute'); 
+
 app.use(cors(corsOptions));
 
 console.log("start...");
 connectDB();
 app.use(express.json());
 
-
+app.use('/api', authRoutes); 
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
