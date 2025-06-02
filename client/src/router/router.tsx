@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router"; // וודא שאתה מיי�
 import AppLayout from "../components/AppLayout";
 import Home from "../components/Home";
 import LoginIn from "../components/LoginIn";
-import UserLayout from "../components/UserLayOut";
+import UserLayout from "../components/UserLayout";
 import LoginForm from "../components/LoginForm";
 import BasicPage from "../components/About";
 import SearchDrive from "../components/SearchDrive";

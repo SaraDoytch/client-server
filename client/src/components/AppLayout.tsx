@@ -11,10 +11,10 @@
 
 import { Outlet } from 'react-router';
 import { useEffect, useState } from 'react';
-import UserLayout from '../components/UserLayout';
+import UserLayout from './UserLayout';
 import Nav from './Nav';
 import HomePageNav from './HomePageNav';
-import Footer from './Footer'; // ודא שהנתיב נכון
+import Footer from './Footer'; 
 
 const AppLayout = () => {
   const [baseNav, setBaseNav] = useState<boolean>(true);

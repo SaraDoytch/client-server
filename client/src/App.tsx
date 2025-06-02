@@ -3,7 +3,6 @@
 import { RouterProvider } from 'react-router'
 import './App.css'
 
-// import router from './app/routes/router2'
 import router from "./router/router"
 import { Provider } from 'react-redux'
 import store from './stores/Store'
