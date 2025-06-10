@@ -32,7 +32,7 @@ export const LoginBtn: CSSProperties = {
 export const SignUpBtn: CSSProperties = {
     backgroundColor: "white", // חום כהה
     color: "rgb(52, 13, 211)",
-     border: "1px solid rgb(52, 13, 211)", 
+    border: "1px solid rgb(52, 13, 211)",
     borderRadius: "5px",
     padding: "0.6rem 1rem",
     fontSize: "0.9rem",
