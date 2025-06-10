@@ -1,9 +1,5 @@
-import React from 'react'
+import { CSSProperties } from "@mui/material";
 
-function SearchDrive() {
-  return (
-    <div>SearchDrive</div>
-  )
+export const containerSearch:CSSProperties={
+    marginLeft: "10vw"
 }
-
-export default SearchDrive
