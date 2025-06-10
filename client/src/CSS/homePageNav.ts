@@ -12,7 +12,7 @@ export const NavbarContainer: CSSProperties = {
 };
 export const NavbarLink: CSSProperties = {
     textDecoration: "none", // מוריד קו תחתון ברירת מחדל
-   
+
     fontSize: "120%",
     fontWeight: "100",
     padding: "0.5rem 1rem", // ריווח פנימי לכל קישור
@@ -22,12 +22,12 @@ export const NavbarLink: CSSProperties = {
     transition: "color 0.3s ease-in-out",
     color: 'rgb(0, 0, 0)',
     fontFamily: "Calibri",
- 
-    
+
+
 };
 export const NavbarLinkHover: CSSProperties = {
     textDecoration: "none", // מוריד קו תחתון ברירת מחדל
-   
+
     fontSize: "1.4rem",
     fontWeight: "600",
     padding: "0.5rem 1rem", // ריווח פנימי לכל קישור
@@ -37,6 +37,6 @@ export const NavbarLinkHover: CSSProperties = {
     transition: "color 0.3s ease-in-out",
     color: 'rgb(39, 8, 165)',
     fontFamily: "Calibri",
- 
-    
+
+
 };
