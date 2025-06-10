@@ -13,6 +13,6 @@ const SuggestionSchema = new mongoose.Schema({
     passengers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', index: true }],
     status: { type: String, enum: ['פעיל', 'בוטל', 'הושלם'], default: 'פעיל' },
     createdAt: { type: Date, default: Date.now, index: true },
-    
+
 });
 module.exports = mongoose.model('Suggestion', SuggestionSchema)
