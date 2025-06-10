@@ -7,16 +7,51 @@ import {
 } from "../CSS/home";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
+import { useAddcommentMutation, useGetAllcommentsQuery } from "../stores/Slices/endPointComments";
 import { Comment } from "./interfaces/Interface";
+import { RootState } from "../stores/Store";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+    const currentUser = useSelector((state: RootState) => state.auth.currentUser);
+    const isLoggedIn = Boolean(currentUser);
     const [isOpen, setIsOpen] = useState(false);
     const defaultComment: Comment = { text: "" };
     const [comment_, setComment] = useState<Comment>(defaultComment);
+    const [Addcomment] = useAddcommentMutation();
     const [index, setIndex] = useState(0);
 
+    const { data } = useGetAllcommentsQuery();
+    const testimonials = data ?? [];
 
 
+    const next = () => {
+        if (testimonials.length === 0) return;
+        setIndex((index + 1) % testimonials.length);
+    };
+
+    const prev = () => {
+        if (testimonials.length === 0) return;
+        setIndex((index - 1 + testimonials.length) % testimonials.length);
+    };
+
+    const handleClick = async () => {
+        await Addcomment(comment_);
+        console.log("תגובה:", comment_);
+        setIsOpen(false);
+    };
+    useEffect(() => {
+        if (testimonials.length === 0) {
+            return;
+        }
+        const timer = setInterval(() => {
+            setIndex((prevIndex) => {
+                return (prevIndex + 1) % testimonials.length;
+            });
+        }, 4000);
+
+        return () => clearInterval(timer);
+    }, [testimonials.length]);
     return (
         <>
             <div>
@@ -42,7 +77,7 @@ const Home = () => {
                                 }}
                             />
                             <div style={{ textAlign: "right" }}>
-                                <button >שלח</button>
+                                <button onClick={handleClick}>שלח</button>
                             </div>
                         </div>
                     </div>
@@ -50,23 +85,26 @@ const Home = () => {
 
                 <div style={picture}>
                     <div style={containerLinks}>
-                        <div style={bigFont}>מהיום קל יותר ...... (צריך ניסוח)</div>
-                        <div style={mediumFont}>מלל כלשהוא...</div>
-                        <div style={mediumFont}>מלל כלשהוא...</div>
-                        <div style={mediumFont}>מלל כלשהוא...</div>
-                        <div style={mediumFont}>מלל כלשהוא...</div>
+                        {/* <<<<<<< HEAD */}
+                        <div style={bigFont}>מהיום זה קל יותר מתמיד</div>
+                        <div style={mediumFont}>תכנון הנסיעות שלך בלחיצות פשוטות</div>
+                        <div style={mediumFont}>התאמה מושלמת לדרישות וללו"ז שלך</div>
+                        <div style={mediumFont}>שיתוף ותקשורת עם נוסעים ונהגים בזמן אמת</div>
+                        <div style={mediumFont}>קבלת עדכונים והודעות ישירות מהאפליקציה</div>
                         <div style={bigFont}>והכל בקליק אחד</div>
-                        <div style={containerOfBtnsInHomePage}>
-                            <Link to="/UserProfile">
-                                <Button sx={btnStyle} style={margin}>פרופיל משתמש</Button>
-                            </Link>
-                            <Link to="/Offer">
-                                <Button sx={btnStyle} style={margin}>הצעת נסיעה</Button>
-                            </Link>
-                            <Link to="/SearchDrive">
-                                <Button sx={btnStyle} style={margin}>חפש נסיעה</Button>
-                            </Link>
-                        </div>
+                        {currentUser && (
+                            <div style={containerOfBtnsInHomePage}>
+                                <Link to="/Update">
+                                    <Button sx={btnStyle} style={margin}>עדכן נסיעה</Button>
+                                </Link>
+                                <Link to="/Offer">
+                                    <Button sx={btnStyle} style={margin}>הצעת נסיעה</Button>
+                                </Link>
+                                <Link to="/SearchDrive">
+                                    <Button sx={btnStyle} style={margin}>חפש נסיעה</Button>
+                                </Link>
+                            </div>)}
+                        {/* )} */}
                     </div>
                 </div>
 
@@ -82,11 +120,28 @@ const Home = () => {
                     </div>
                 </section>
                 <section style={commentsContainer}>
-                 
+                    <div>:תגובות ממשתמשים באתר </div>
+                    {testimonials.length > 0 && (
+                        <div>
+                            <div style={commentText}>
+                                "{testimonials[index].text}"
+                            </div>
+                            <div style={inlineContentWrapper}>
+                                <button onClick={prev} style={buttonStyle}>
+                                    ←
+                                </button>
+                                <button onClick={next} style={buttonStyle}>
+                                    →
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </section>
+
             </div>
         </>
     );
 };
 
 export default Home;
+
