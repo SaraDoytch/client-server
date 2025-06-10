@@ -1,33 +1,23 @@
-// import React from 'react'
 
-// function UserLayout() {
-//   return (
-//     <div>UserLayout</div>
-//   )
-// }
+import { useSelector } from "react-redux";
+import { RootState } from "../stores/Store";
+import Nav from "./Nav";
+import HomePageNav from "./HomePageNav";
+import { Outlet } from "react-router";
 
-// export default UserLayout
-
-import { Outlet } from "react-router"
-import Nav from "./Nav"
-import { useEffect, useState } from "react"
-import HomePageNav from "./HomePageNav"
 const UserLayout = () => {
-    const [baseNav, setBaseNav] = useState<boolean>(true)
-    useEffect(() => {
-        const user = localStorage.getItem('currentUser');
-        console.log(user);
-        if (user) {
-            setBaseNav(false)
-        }
-    }, [])
-    return (
-        <div>
-            {
-                baseNav ? <Nav /> : <HomePageNav/>
-            }
-        </div>
-    )
-}
+    const currentUser = useSelector((state: RootState) => state.auth.currentUser);
 
-export default UserLayout
+    return (
+        <>
+
+            <div>
+                {currentUser ? <HomePageNav /> : <Nav />}
+                <Outlet />
+            </div>
+
+        </>
+    );
+};
+
+export default UserLayout;
