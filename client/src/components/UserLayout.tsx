@@ -10,7 +10,6 @@ const UserLayout = () => {
 
     return (
         <>
-
             <div>
                 {currentUser ? <HomePageNav /> : <Nav />}
                 <Outlet />
