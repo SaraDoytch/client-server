@@ -17,9 +17,9 @@ import { Driver_FieldsFillByUser, type, User, CreateSuggestionPayload } from './
 import SuggestionSchema from '../schemas/SuggestionSchema';
 import { useCreateSuggestionMutation } from '../stores/Slices/endPointsDriver';
 import { useNavigate } from 'react-router';
-import { useGetCitiesQuery } from '../stores/Slices/citiesApi';
+import { useGetCitiesQuery } from '../stores/Slices/apiSliceDrivers';
 
-import { useLazyGetStreetsQuery } from '../stores/Slices/streetSlice';
+import { useLazyGetStreetsQuery } from '../stores/Slices/apiSliceDrivers';
 
 const SuggestionDrive = () => {
   const [currentUser, setCurrentUser] = useState<User>();
