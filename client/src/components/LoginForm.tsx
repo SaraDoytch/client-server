@@ -24,8 +24,7 @@ import { User } from './interfaces/Interface';
 import { useRegisterMutation } from '../stores/Slices/UserApiSlice';
 import { login } from '../stores/Slices/authSlice';
 import { styles } from '../CSS/loginForm';
-// import { useDispatch } from 'react-redux';
-import { loginRegister } from '../stores/Slices/authSlice'; // חשוב
+import { loginRegister } from '../stores/Slices/authSlice'; 
 
 
 
@@ -33,7 +32,6 @@ import { loginRegister } from '../stores/Slices/authSlice'; // חשוב
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
   const [Register] = useRegisterMutation();
   const [apiError, setApiError] = useState<string | null>(null);
 
@@ -60,7 +58,6 @@ const LoginForm = () => {
 
   const hasCarValue = watch('hasCar');
 
-  // שינוי ניהול hasCar ו-driveringLicense בלי useEffect
   const onHasCarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const checked = event.target.checked;
     setValue('hasCar', checked);
@@ -69,44 +66,23 @@ const LoginForm = () => {
     }
   };
 
-  // const onSubmit = async (data: User) => {
-  //   try {
-  //     const result = await Register(data).unwrap();
-  //     localStorage.setItem('currentUser', JSON.stringify(result.user));
-  //     navigate('/');
-  //   } catch (error) {
-  //     setApiError('אירעה שגיאה. נסה שוב.');
-  //   }
-  // };
+
 
   const onSubmit = async (data: User) => {
-    // <<<<<<< HEAD
-    //     try {
-    //       const result = await Register(data).unwrap();
-    //       dispatch(login(result.user)); // שמירת המשתמש ב-Redux + localStorage
-    //       navigate('/');
-    //     } catch (error) {
-    //       setApiError('אירעה שגיאה. נסה שוב.');
-    //     }
-    //   };
-    // =======
+
     try {
       const result = await Register(data).unwrap();
 
-      // שמור בלוקאל
       localStorage.setItem('currentUser', JSON.stringify(result.user));
 
-      // עדכן את Redux!
       dispatch(loginRegister(result.user));
 
-      // נווט
       navigate('/');
     } catch (error) {
       setApiError('אירעה שגיאה. נסה שוב.');
     }
   };
 
-  // >>>>>>> e44f49ec6d504252c9039b7aefe26acb7f3af694
 
   return (
     <Box dir="rtl" sx={styles.rootBox}>
