@@ -2,22 +2,21 @@ import { CSSProperties } from "@mui/material";
 
 export const NavbarContainer: CSSProperties = {
     display: "flex",
-    justifyContent: "space-around", // כדי לפזר את הקישורים באופן שווה
+    justifyContent: "space-around", 
     alignItems: "center",
-    backgroundColor: "#E0F2F7", // כחול בהיר מאוד כרקע לכל הניווט (אופציונלי)
+    backgroundColor: "#E0F2F7",
     padding: "1rem 2rem",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", // צל עדין לתת עומק
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)", 
     width: "100%",
-    boxSizing: "border-box", // לוודא שה-padding לא מגדיל את הרוחב מעבר ל-100%
+    boxSizing: "border-box", 
 };
 export const NavbarLink: CSSProperties = {
-    textDecoration: "none", // מוריד קו תחתון ברירת מחדל
-
+    textDecoration: "none", 
     fontSize: "120%",
     fontWeight: "100",
-    padding: "0.5rem 1rem", // ריווח פנימי לכל קישור
-    position: "relative", // חשוב בשביל אפקט הקו התחתון
-    overflow: "hidden", // לוודא שהקו לא יוצא מהגבולות לפני ה-hover
+    padding: "0.5rem 1rem", 
+    position: "relative", 
+    overflow: "hidden", 
     cursor: "pointer",
     transition: "color 0.3s ease-in-out",
     color: 'rgb(0, 0, 0)',
@@ -26,13 +25,12 @@ export const NavbarLink: CSSProperties = {
 
 };
 export const NavbarLinkHover: CSSProperties = {
-    textDecoration: "none", // מוריד קו תחתון ברירת מחדל
-
+    textDecoration: "none", 
     fontSize: "1.4rem",
     fontWeight: "600",
-    padding: "0.5rem 1rem", // ריווח פנימי לכל קישור
-    position: "relative", // חשוב בשביל אפקט הקו התחתון
-    overflow: "hidden", // לוודא שהקו לא יוצא מהגבולות לפני ה-hover
+    padding: "0.5rem 1rem", 
+    position: "relative", 
+    overflow: "hidden", 
     cursor: "pointer",
     transition: "color 0.3s ease-in-out",
     color: 'rgb(39, 8, 165)',

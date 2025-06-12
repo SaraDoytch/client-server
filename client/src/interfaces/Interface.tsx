@@ -68,3 +68,8 @@ export interface ResDriver extends Driver{
 export interface Comment{
     text: string
 }
+
+export interface CreateSuggestionPayload extends Driver_FieldsFillByUser {
+    driver: string; 
+  }
+  

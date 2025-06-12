@@ -29,7 +29,6 @@ export const buttonStyles = {
         fontWeight: "bold",
         fontSize: "1rem",
         padding: "12px 0",
-        // הגברת נראות הכפתור עם צללים וטרנזישן
         boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
         transition: "background-color 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
@@ -55,3 +54,4 @@ export const backButtonStyles = {
         },
     },
 };
+

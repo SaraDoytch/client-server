@@ -13,13 +13,13 @@ import {
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Driver_FieldsFillByUser, type, User, CreateSuggestionPayload } from './interfaces/Interface';
+import { Driver_FieldsFillByUser, type, User, CreateSuggestionPayload } from '../interfaces/Interface';
 import SuggestionSchema from '../schemas/SuggestionSchema';
 import { useCreateSuggestionMutation } from '../stores/Slices/endPointsDriver';
 import { useNavigate } from 'react-router';
-import { useGetCitiesQuery } from '../stores/Slices/citiesApi';
+import { useGetCitiesQuery } from '../stores/Slices/geoApi';
 
-import { useLazyGetStreetsQuery } from '../stores/Slices/streetSlice';
+import { useLazyGetStreetsQuery } from '../stores/Slices/geoApi';
 
 const SuggestionDrive = () => {
   const [currentUser, setCurrentUser] = useState<User>();

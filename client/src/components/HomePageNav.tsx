@@ -46,7 +46,7 @@ const HomePageNav = () => {
 
             {/* קישורים מרכזיים */}
             <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-                <NavLink to="/Update" style={({ isActive }) => ({
+                <NavLink to="/UserProfile" style={({ isActive }) => ({
                     ...NavbarLink,
                     color: isActive ? '#004ba0' : '#333',
                     fontWeight: isActive ? '700' : '400',
@@ -55,7 +55,7 @@ const HomePageNav = () => {
                 </NavLink>
 
                 {user?.hasCar && (
-                    <NavLink to="/Offer" style={({ isActive }) => ({
+                    <NavLink to="/SuggestionDrive" style={({ isActive }) => ({
                         ...NavbarLink,
                         color: isActive ? '#004ba0' : '#333',
                         fontWeight: isActive ? '700' : '400',

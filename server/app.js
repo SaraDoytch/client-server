@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const app = express();
-const axios = require('axios');  // <-- הוסף שורה זו
+const axios = require('axios'); 
 const PORT = process.env.PORT || 7001;
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -11,7 +11,7 @@ const authRoutes = require('./routes/authRoute');
 app.use(cors(corsOptions));
 const driverRouter = require('./routes/driverSuggestionRoute')
 const commentsRouter = require('./routes/CommentRoute')
-const geoRoutes = require("./server/index"); // נתיב לפי המיקום שיצרת
+const geoRoutes = require("./server/index"); 
 
 console.log("start...");
 connectDB();

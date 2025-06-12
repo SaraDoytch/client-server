@@ -2,7 +2,7 @@
 
 import { aboutTitle, mainPage, typingAnimation } from "../CSS/home";
 
-const BasicPage = () => {
+const About = () => {
     return (
         <>
             <div style={mainPage}>
@@ -48,4 +48,4 @@ const BasicPage = () => {
     );
 };
 
-export default BasicPage;
+export default About;

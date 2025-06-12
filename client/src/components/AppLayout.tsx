@@ -1,5 +1,5 @@
 
-import UserLayout from './UserLayOut';
+import UserLayout from './UserLayout';
 import Footer from './Footer';
 
 const AppLayout = () => {

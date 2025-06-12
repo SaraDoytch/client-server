@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router';
 import { useCookies } from 'react-cookie';
 
 import LoginSchema from '../schemas/LoginSchema';
-import { LoginCredentials } from './interfaces/Interface';
+import { LoginCredentials } from '../interfaces/Interface';
 import { useLoginMutation } from '../stores/Slices/UserApiSlice';
 import { styles } from '../CSS/loginIn';
 
@@ -55,10 +55,8 @@ const LoginIn = () => {
       // שמירת המשתמש ב-localStorage
       localStorage.setItem("currentUser", JSON.stringify(result.user));
 
-      // עדכון ה-Redux state
       dispatch(login(result.user));
 
-      // ניתוב לעמוד הבית (או כל עמוד אחר שמכיל UserLayout)
       navigate('/');
     } catch (err) {
       console.error(err);

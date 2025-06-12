@@ -8,7 +8,7 @@ const updateDriveSlice = ApiSlice.injectEndpoints({
                 method: "PUT",
                 body: drive
             }),
-            invalidatesTags: ["Drives"]
+            invalidatesTags: ["Driver"]
         }),
     })
 })

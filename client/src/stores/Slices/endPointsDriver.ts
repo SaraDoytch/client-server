@@ -1,5 +1,7 @@
-import { Driver, ResDriver } from "../../components/interfaces/Interface";
-import apiSliceDriver from "./apiSliceDrivers";
+
+
+import { Driver ,CreateSuggestionPayload} from "../../interfaces/Interface";
+import apiSliceDriver from "./ApiSlice";
 
 const apiDriverSlice = apiSliceDriver.injectEndpoints({
     endpoints: (builder) => ({
@@ -36,8 +38,38 @@ const apiDriverSlice = apiSliceDriver.injectEndpoints({
             }),
             invalidatesTags: ["Driver"],
         }),
+   
+
+        joinSuggestion: builder.mutation<Driver, { suggestionId: string; userId: string ,countSeat:number}>({
+  query: ({ suggestionId, userId,countSeat }) => ({
+    url: `/drivers/${suggestionId}/joinSuggestion`,
+    method: "PUT",
+
+    body: { userId ,countSeat},
         
+  }),
+  invalidatesTags: ["Driver"],
+}),
+createSuggestion: builder.mutation<Driver, CreateSuggestionPayload>({
+  query: (newSuggestion) => ({
+    url: "/drivers/createSuggestion",
+    method: "POST",
+    body: newSuggestion,
+  }),
+  invalidatesTags: ["Driver"],
+}),
+
+getDriverSuggestions: builder.query<Driver[], string>({
+  query: (driverId) => `/drivers/driver/${driverId}`,
+  providesTags: ["Driver"],
+}),
+getPassengerSuggestions: builder.query<Driver[], string>({
+  query: (userId) => `/drivers/passenger/${userId}`,
+  providesTags: ["Driver"],
+}),
+
     }),
+    
 });
 
 export const {
@@ -46,6 +78,9 @@ export const {
     useAdddriverMutation,
     useUpdatedriverMutation,
     useDeletedriverMutation,
-    
+    useJoinSuggestionMutation,
+    useCreateSuggestionMutation,
+    useGetDriverSuggestionsQuery,
+    useGetPassengerSuggestionsQuery
 } = apiDriverSlice;
 export default apiDriverSlice
