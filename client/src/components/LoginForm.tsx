@@ -72,13 +72,10 @@ const LoginForm = () => {
     try {
       const result = await Register(data).unwrap();
 
-      // שמור בלוקאל
       localStorage.setItem('currentUser', JSON.stringify(result.user));
 
-      // עדכן את Redux!
       dispatch(loginRegister(result.user));
 
-      // נווט
       navigate('/');
     } catch (error) {
       setApiError('אירעה שגיאה. נסה שוב.');

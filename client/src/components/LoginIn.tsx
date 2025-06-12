@@ -55,10 +55,8 @@ const LoginIn = () => {
       // שמירת המשתמש ב-localStorage
       localStorage.setItem("currentUser", JSON.stringify(result.user));
 
-      // עדכון ה-Redux state
       dispatch(login(result.user));
 
-      // ניתוב לעמוד הבית (או כל עמוד אחר שמכיל UserLayout)
       navigate('/');
     } catch (err) {
       console.error(err);
