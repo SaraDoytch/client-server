@@ -1,5 +1,4 @@
 
-// import React from "react";
 import {
   Box,
   Typography,
@@ -17,7 +16,7 @@ import {
   useGetDriverSuggestionsQuery,
   useGetPassengerSuggestionsQuery,
 } from "../stores/Slices/endPointsDriver";
-import { Driver } from "./interfaces/Interface";
+import { Driver } from "../interfaces/Interface";
 
 const UserProfile = () => {
   const navigate = useNavigate();

@@ -5,12 +5,12 @@ import {
     margin, mediumFont, modalContentStyle, modalOverlayStyle,
     picture, sectionStyle, textStyle
 } from "../CSS/home";
-import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { useAddcommentMutation, useGetAllcommentsQuery } from "../stores/Slices/endPointComments";
-import { Comment } from "./interfaces/Interface";
+import { Comment } from "../interfaces/Interface";
 import { RootState } from "../stores/Store";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 
 const Home = () => {
     const currentUser = useSelector((state: RootState) => state.auth.currentUser);
@@ -85,7 +85,6 @@ const Home = () => {
 
                 <div style={picture}>
                     <div style={containerLinks}>
-                        {/* <<<<<<< HEAD */}
                         <div style={bigFont}>מהיום זה קל יותר מתמיד</div>
                         <div style={mediumFont}>תכנון הנסיעות שלך בלחיצות פשוטות</div>
                         <div style={mediumFont}>התאמה מושלמת לדרישות וללו"ז שלך</div>
@@ -94,17 +93,16 @@ const Home = () => {
                         <div style={bigFont}>והכל בקליק אחד</div>
                         {currentUser && (
                             <div style={containerOfBtnsInHomePage}>
-                                <Link to="/Update">
+                                <Link to="/UserProfile">
                                     <Button sx={btnStyle} style={margin}>עדכן נסיעה</Button>
                                 </Link>
-                                <Link to="/Offer">
+                                <Link to="/SuggestionDrive">
                                     <Button sx={btnStyle} style={margin}>הצעת נסיעה</Button>
                                 </Link>
                                 <Link to="/SearchDrive">
                                     <Button sx={btnStyle} style={margin}>חפש נסיעה</Button>
                                 </Link>
                             </div>)}
-                        {/* )} */}
                     </div>
                 </div>
 

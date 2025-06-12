@@ -1,24 +1,24 @@
-import { Comment } from "../../components/interfaces/Interface";
-import ApiSliceCommets from "./ApiSlice";
-const apiCommentSlice = ApiSliceCommets.injectEndpoints({
-    endpoints: (builder) => ({
-        getAllcomments: builder.query<Comment[], void>({
-            query: () => "/comments",
-            providesTags: ["Comment"],
-        }),
-        addcomment: builder.mutation<Comment,Comment>({
-            query: (newdriver) => ({
-                url: "/comments",
-                method: "POST",
-                body: newdriver,
-            }),
-            invalidatesTags: ["Comment"],
-        }),
+
+
+
+import ApiSlice from "./ApiSlice";
+import { Comment } from "../../interfaces/Interface";
+
+const apiCommentSlice = ApiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getAllcomments: builder.query<Comment[], void>({
+      query: () => "/comments",
+      providesTags: ["Comment"],
     }),
+    addcomment: builder.mutation<Comment, Comment>({
+      query: (newComment) => ({
+        url: "/comments",
+        method: "POST",
+        body: newComment,
+      }),
+      invalidatesTags: ["Comment"],
+    }),
+  }),
 });
 
-export const {
-    useGetAllcommentsQuery,
-    useAddcommentMutation,
-} = apiCommentSlice;
-export default apiCommentSlice
+export const { useGetAllcommentsQuery, useAddcommentMutation } = apiCommentSlice;

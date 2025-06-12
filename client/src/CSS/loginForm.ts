@@ -1,4 +1,3 @@
-// LoginForm.styles.ts
 
 export const styles = {
   rootBox: {

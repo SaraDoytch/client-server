@@ -1,11 +1,3 @@
-// import { CSSProperties } from "@mui/material";
-
-// export const containerSearch:CSSProperties={
-//     marginLeft: "10vw"
-// }
-
-
-
 import { useState } from "react";
 import { format } from "date-fns";
 import { he } from "date-fns/locale";
@@ -37,8 +29,8 @@ import { useGetAlldriversQuery } from "../stores/Slices/endPointsDriver";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import SearchDriverSchema from "../schemas/SearchDriverSchema";
-import { Driver } from "./interfaces/Interface";
-import { useGetCitiesQuery, City } from "../stores/Slices/apiSliceDrivers";
+import { Driver } from "../interfaces/Interface";
+import { useGetCitiesQuery, City } from "../stores/Slices/geoApi";
 
 type SearchData = {
   source: City | null;
@@ -220,7 +212,7 @@ const SearchDrive = () => {
               color="primary"
               startIcon={<SearchIcon />}
               sx={{ width: { xs: "45%", md: "200%" }, height: 52, fontSize: "1.1rem", borderRadius: 2 }}
-              disabled={!watch("source") || !watch("destination") || !watch("date") || !watch("time")}
+              disabled={!watch("source") || !watch("destination") || !watch("date") }
             >
               חפש נסיעות
             </Button>

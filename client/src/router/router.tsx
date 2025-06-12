@@ -1,10 +1,10 @@
-import { createBrowserRouter } from "react-router"; // וודא שאתה מייבא מ-react-router
+import { createBrowserRouter } from "react-router"; 
 import AppLayout from "../components/AppLayout";
 import Home from "../components/Home";
 import LoginIn from "../components/LoginIn";
-import UserLayout from "../components/UserLayOut";
+import UserLayout from "../components/AppLayout";
 import LoginForm from "../components/LoginForm";
-import BasicPage from "../components/About";
+import About from "../components/About";
 import SearchDrive from "../components/SearchDrive";
 import RideInfoCard from "../components/RideInfoCard";
 import SuggestionDrive from "../components/SuggestionDrive";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       { path: "loginIn", element: <LoginIn /> },
       { path: "UserProfile", element: <UserProfile/> },
-      { path: "About", element: <BasicPage /> },
+      { path: "About", element: <About /> },
       {
         path: "SearchDrive", 
         children: [
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           { path: ":_id", element: <RideInfoCard /> }
         ]
       },
-      { path: "Offer", element: <SuggestionDrive /> },
+      { path: "SuggestionDrive", element: <SuggestionDrive /> },
     ]
   }
 ]);

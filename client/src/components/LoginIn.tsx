@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router';
 import { useCookies } from 'react-cookie';
 
 import LoginSchema from '../schemas/LoginSchema';
-import { LoginCredentials } from './interfaces/Interface';
+import { LoginCredentials } from '../interfaces/Interface';
 import { useLoginMutation } from '../stores/Slices/UserApiSlice';
 import { styles } from '../CSS/loginIn';
 

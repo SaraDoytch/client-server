@@ -235,29 +235,24 @@ const joinSuggestion = async (req, res) => {
 
 const getFoundById = async (req, res) => {
     try {
-        const { id } = req.params; // ID שמגיע מ-req.params (לדוגמה, מ- /suggestions/:id)
+        const { id } = req.params; 
 
-        // זו הפונקציה שצריכה להיות בשימוש. היא שולפת את ההצעה ומאכלסת את השדות הרצויים.
         const suggestion = await Suggestion.findById(id)
-            .populate('driver', 'userName')          // מאכלס את פרטי הנהג, בוחר רק userName
-            .populate('passengers', 'userName gender') // מאכלס את פרטי הנוסעים, בוחר userName ו-gender
-            .exec(); // חשוב לקרוא ל-exec()
+            .populate('driver', 'userName')          
+            .populate('passengers', 'userName gender') 
+            .exec(); 
 
         if (!suggestion) {
-            // אם לא נמצאה הצעה (לא 'found' ולא 'suggestion' אם אלו היו סוגים שונים)
             return res.status(404).json({ message: 'Suggestion not found' });
         }
 
-        // הכל בסדר, שולחים את ההצעה המאוכלסת ללקוח
         res.json(suggestion);
 
     } catch (error) {
         console.error('Error fetching suggestion/found:', error);
-        // אם זו שגיאה של ID לא חוקי, אפשר להחזיר 400
         if (error.name === 'CastError' && error.path === '_id') {
             return res.status(400).json({ message: 'Invalid ID format' });
         }
-        // אחרת, שגיאת שרת כללית
         res.status(500).json({ message: 'Failed to retrieve suggestion/found' });
     }
 }
@@ -287,20 +282,15 @@ const createSuggestion = async (req, res) => {
     try {
         const newSuggestion = new Suggestion(req.body);
         const savedSuggestion = await newSuggestion.save();
-
-        // הדפסת מזהה הנהג
-        console.log('driver id:', savedSuggestion.driver); // ObjectId תקני
-
-        // עדכון המשתמש - הוספת מזהה הנסיעה לשדה driverSuggestions
+        console.log('driver id:', savedSuggestion.driver); 
         await User.findByIdAndUpdate(
             savedSuggestion.driver,
             { $push: { driverSuggestions: savedSuggestion._id } },
             { new: true }
 
         );
-        console.log('driver:', savedSuggestion.driver); // ודא שזה תקף
+        console.log('driver:', savedSuggestion.driver); 
 
-        // שליפת המשתמש כולל הנסיעות כדי לבדוק שהכל תקין
         const user = await User.findById(savedSuggestion.driver).populate('driverSuggestions');
         console.log('נסיעות של המשתמש:', user.driverSuggestions);
 

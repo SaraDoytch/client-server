@@ -1,6 +1,6 @@
 
 
-import { Driver ,CreateSuggestionPayload} from "../../components/interfaces/Interface";
+import { Driver ,CreateSuggestionPayload} from "../../interfaces/Interface";
 import apiSliceDriver from "./ApiSlice";
 
 const apiDriverSlice = apiSliceDriver.injectEndpoints({

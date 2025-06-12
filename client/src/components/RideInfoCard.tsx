@@ -34,7 +34,7 @@ import {
 import { skipToken } from "@reduxjs/toolkit/query";
 import { format, isBefore } from "date-fns";
 import { he } from "date-fns/locale";
-import { Driver, User } from "./interfaces/Interface";
+import { Driver, User } from "../interfaces/Interface";
 
 import { styles, buttonStyles, backButtonStyles } from "../CSS/rideInfoCard";
 
@@ -96,8 +96,6 @@ console.log("נוסע נוסף בהצלחה", result);
 console.log("נוסע נוסף בהצלחה");
 
     setUserPassengersCount(selectedPassengersCount);
-}else{
-  alert("ןוארכקראטיוחלךף")
 }
 
 

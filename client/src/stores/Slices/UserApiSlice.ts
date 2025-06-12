@@ -1,29 +1,7 @@
-import { User } from "../../components/interfaces/Interface";
+import { User } from "../../interfaces/Interface";
 import apiSlice from "../Slices/ApiSlice";
-interface SuggestionSchema {
-    driver: UserSchema;
-    address: string;
-    source: string;
-    destination: string;
-    date: Date;
-    time:  string;
-    availableSeats:  number;
-    genderPreference: string;
-    passengers: UserSchema
-    status: string;
-  
-}
 
-interface UserSchema {
-    userName: string;
-    phone: string;
-    email: string;
-     password: string;
-    hasCar?: boolean|undefined;
-    driveringLicense?: string|undefined;
-    gender: string;
 
-}
 interface LoginCredentials {
     email: string;
     password: string;
@@ -47,7 +25,7 @@ const UserApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         register: builder.mutation<Response,User>({
             query: (user) => ({
-                url: "/register",
+                url: "api/register",
                 method: "POST",
                 body: user
             }),
@@ -55,7 +33,7 @@ const UserApiSlice = apiSlice.injectEndpoints({
         }),
         login: builder.mutation<Response,LoginCredentials>({
             query: (user) => ({
-                url: "/login",
+                url: "api/login",
                 method: "POST",
                 body: user
             }),

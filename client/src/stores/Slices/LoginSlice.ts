@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RegisterUser, User } from "../../components/interfaces/Interface";
+import { RegisterUser, User } from "../../interfaces/Interface";
 
 interface loginUser {
   user:RegisterUser
@@ -16,12 +16,9 @@ const LoginSlice = createSlice({
          addUser: (state, action: PayloadAction<RegisterUser>) => {
              state.user=action.payload
         },
-
-
     }
 });
 
 export const { addUser } = LoginSlice.actions;
 export const selectUser = (state: { login: loginUser }):User => {state.login.user};
-
 export default LoginSlice.reducer;

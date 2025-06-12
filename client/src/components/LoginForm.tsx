@@ -20,11 +20,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import FormSchema from '../schemas/FormSchema';
-import { User } from './interfaces/Interface';
+import { User } from '../interfaces/Interface';
 import { useRegisterMutation } from '../stores/Slices/UserApiSlice';
 import { login } from '../stores/Slices/authSlice';
 import { styles } from '../CSS/loginForm';
-import { loginRegister } from '../stores/Slices/authSlice'; // חשוב
+import { loginRegister } from '../stores/Slices/authSlice'; 
+
 
 
 
@@ -67,8 +68,10 @@ const LoginForm = () => {
   };
 
 
+
   const onSubmit = async (data: User) => {
- 
+
+
     try {
       const result = await Register(data).unwrap();
 
